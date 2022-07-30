@@ -1,0 +1,16 @@
+{
+    "name": "InterfaceAdaptersLayer",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ce15dd2aa61ddbb4397a9e449ad166cc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
