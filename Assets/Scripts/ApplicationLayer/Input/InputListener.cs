@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace ApplicationLayer.Input
 {
-    public class InputHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
+    public class InputListener : MonoBehaviour, IBeginDragHandler, IDragHandler
     {
         public void OnBeginDrag(PointerEventData eventData)
         {
