@@ -14,7 +14,13 @@ namespace InterfaceAdaptersLayer.UseCases.LoadGame
 
         public void LoadGame()
         {
-            // TODO: Load leaderboards, etc
+            // TODO: Load leaderboards, etc; then load game scene
+            
+            LoadGameScene();
+        }
+
+        private void LoadGameScene()
+        {
             _sceneLoader.LoadScene(SceneConstants.Scene.Game, LoadSceneMode.Single);
         }
     }
