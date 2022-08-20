@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using InterfaceAdaptersLayer.Services.LoadScene;
 using UnityEngine.SceneManagement;
 
@@ -12,11 +14,16 @@ namespace InterfaceAdaptersLayer.UseCases.LoadGame
             _sceneLoader = sceneLoader;
         }
 
-        public void LoadGame()
+        public async void LoadGame()
         {
             // TODO: Load leaderboards, etc; then load game scene
-            
+            await Task.Run(SimulateLoadingStuff);
             LoadGameScene();
+        }
+
+        private async Task SimulateLoadingStuff()
+        {
+            await Task.Delay(TimeSpan.FromSeconds(1.5f));
         }
 
         private void LoadGameScene()
