@@ -7,10 +7,14 @@ namespace InterfaceAdaptersLayer.Grid
         public DomainLayer.Grid.Grid Grid { get; private set; }
         
         private readonly IGridLoader _gridLoader;
-        
-        public GridController(IGridLoader gridLoader)
+        private readonly ITileSpawner _tileSpawner;
+
+        public GridController(
+            IGridLoader gridLoader,
+            ITileSpawner tileSpawner)
         {
             _gridLoader = gridLoader;
+            _tileSpawner = tileSpawner;
         }
         
         public GridDto InitializeGrid()
@@ -25,10 +29,19 @@ namespace InterfaceAdaptersLayer.Grid
             };
         }
 
-        private static DomainLayer.Grid.Grid CreateGrid()
+        private DomainLayer.Grid.Grid CreateGrid()
         {
             // TODO: be able to create different size grids
-            return new DomainLayer.Grid.Grid(GridConstants.Rows, GridConstants.Columns);
+            var grid = new DomainLayer.Grid.Grid(GridConstants.Rows, GridConstants.Columns);
+            SpawnInitialTiles(grid);
+            
+            return grid;
+        }
+
+        private void SpawnInitialTiles(DomainLayer.Grid.Grid grid)
+        {
+            _tileSpawner.SpawnTile(grid);
+            _tileSpawner.SpawnTile(grid);
         }
     }
 }

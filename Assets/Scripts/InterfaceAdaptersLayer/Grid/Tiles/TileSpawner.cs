@@ -4,29 +4,28 @@ namespace InterfaceAdaptersLayer.Grid
 {
     public class TileSpawner : ITileSpawner
     {
-        private readonly DomainLayer.Grid.Grid _grid;
         private readonly ITileGenerator _tileGenerator;
+        private readonly IGridHelper _gridHelper;
 
         public TileSpawner(
-            DomainLayer.Grid.Grid grid,
-            ITileGenerator tileGenerator)
+            ITileGenerator tileGenerator,
+            IGridHelper gridHelper)
         {
-            _grid = grid;
             _tileGenerator = tileGenerator;
+            _gridHelper = gridHelper;
         }
         
-        public void SpawnTile()
+        public void SpawnTile(DomainLayer.Grid.Grid grid)
         {
             var tile = _tileGenerator.GenerateTile();
-            var cell = GetEmptyCell();
+            var cell = GetEmptyCell(grid);
             
             cell.SetTile(tile);
         }
 
-        private Cell GetEmptyCell()
+        private Cell GetEmptyCell(DomainLayer.Grid.Grid grid)
         {
-            // TODO: search the grid for optimum empty cell
-            return null;
+            return _gridHelper.GetRandomEmptyCell(grid);
         }
     }
 }

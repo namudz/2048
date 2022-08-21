@@ -31,7 +31,6 @@ namespace ApplicationLayer.Renderers
 
         private void LoadGrid()
         {
-            // TODO: Must call some service that will create/load the grid, cached it and return a GridDto
             _grid = _gridController.InitializeGrid();
         }
 

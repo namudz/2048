@@ -25,7 +25,9 @@ namespace Installers
         private void InitializeDependencies()
         {
             var gridLoader = new GridLoader();
-            _gridController = new GridController(gridLoader);
+            var tileSpawner = new TileSpawner(new TileGenerator(), new GridHelper(new System.Random()));
+            
+            _gridController = new GridController(gridLoader, tileSpawner);
         }
     }
 }

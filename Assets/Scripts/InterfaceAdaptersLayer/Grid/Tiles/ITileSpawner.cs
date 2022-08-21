@@ -2,6 +2,6 @@
 {
     public interface ITileSpawner
     {
-        void SpawnTile();
+        void SpawnTile(DomainLayer.Grid.Grid grid);
     }
 }
