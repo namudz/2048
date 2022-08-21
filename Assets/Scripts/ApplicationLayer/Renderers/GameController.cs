@@ -10,8 +10,14 @@ namespace ApplicationLayer.Renderers
         [SerializeField] private CameraController _cameraController;
         
         private GridDto _grid;
+        private IGridController _gridController;
 
-        public void Start()
+        public void InjectDependencies(IGridController gridController)
+        {
+            _gridController = gridController;
+        }
+
+        public void StartGame()
         {
             LoadGame();
             _cameraController.AdjustToGrid(_grid);
@@ -25,11 +31,8 @@ namespace ApplicationLayer.Renderers
 
         private void LoadGrid()
         {
-            _grid = new GridDto
-            {
-                SizeX = 3,
-                SizeY = 4
-            };
+            // TODO: Must call some service that will create/load the grid, cached it and return a GridDto
+            _grid = _gridController.InitializeGrid();
         }
 
         private void RenderBoard()
